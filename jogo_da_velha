@@ -1,0 +1,70 @@
+V=[[" "," "," "],[" "," "," "],[" "," "," "]]
+p=0
+def tabuleiro(V):
+  for row in V:
+    print("|".join(row))
+    print("_____")
+j=0
+while (j<9 and p==0):
+  tabuleiro(V)
+  row = int(input("escolha uma fileira entre (1 e 3): "))
+  col = int(input("escolha uma coluna entre (1 e 3): "))
+  col = col-1
+  row = row-1
+  if col>=0 and row>=0 and col<3 and row<3:
+    if V[row][col] == " " and j%2==0:
+      V[row][col] = "X"
+      j=j+1
+    elif V[row][col] == " " and j%2==1:
+      V[row][col] = "O"  
+      j=j+1
+    else:
+      print("Você precisa selecionar um espaço vazio")
+  else:
+    print("Você precisa selecionar um espaço válido")
+  i=0
+  while (i<3):
+      if V[0][i] == V[1][i] == V[2][i] == "X":
+        tabuleiro(V)
+        print("X wins")
+        p=1
+        break
+      if V[0][i] == V[1][i] == V[2][i] == "O":
+        tabuleiro(V)
+        print("O wins")
+        p=1
+        break
+      i=i+1
+  I=0
+  while (I<3):
+      if V[I][0] == V[I][1] == V[I][2] == "X":
+        tabuleiro(V)
+        print("X wins")
+        p=1
+        break
+      if V[I][0] == V[I][1] == V[I][2] == "O":
+        tabuleiro(V)
+        print("O wins")
+        p=1
+        break
+      I=I+1
+  if V[0][0] == V[1][1] == V[2][2] == "X":
+    tabuleiro(V)
+    print("X wins")
+    p=1
+    break
+  if V[0][0] == V[1][1] == V[2][2] == "O":
+    tabuleiro(V)
+    print("X wins")
+    p=1
+    break
+  if V[0][2] == V[1][1] == V[2][0] == "X":
+    tabuleiro(V)
+    print("X wins")
+    p=1
+    break
+  if V[0][2] == V[1][1] == V[2][0] == "O":
+    tabuleiro(V)
+    print("X wins")
+    p=1
+    break
