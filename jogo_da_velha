@@ -68,6 +68,5 @@ while (j<9 and p==0):
     print("O wins")
     p=1
     break
-  elif p==0 and j==9:
-    tabuleiro(V)
-    print("o jogo deu velha")
+if p==0:
+  print("O jogo deu velha")
