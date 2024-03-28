@@ -1,7 +1,7 @@
 from hashlib import sha256
 class senhas:
     def __init__(self,senha):
-        cripto_senha = sha256(senha.encode()).hexdigest()
+        cripto_senha = senha
         senha_entrada= 0
         senha_saida = str(senha_entrada)
         while sha256(senha_saida.encode()).hexdigest()!= cripto_senha:
@@ -10,7 +10,7 @@ class senhas:
         self.senha=senha_entrada 
     def exibir_informacoes(self):
         return f"a senha correta é {self.senha}"
-senha = (input("digite a senha para ser criptografada: \n"))
+senha = (input("digite a senha já criptografada: \n"))
 p=senhas(senha)
 print(p.exibir_informacoes())
 
