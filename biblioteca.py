@@ -15,6 +15,9 @@ caracter = []
 adm = False
 Login = False
 id_funcionario = 0
+id_livro=0
+id_jornal=0
+id_revista=0
 while True:
     SENHAS[0] = Criptografar(input("Seja bem vindo ao Sistema da Biblioteca.\nInsira uma senha para a conta de Administrador, que tem ID 0: "))
     LimparTerminal()
@@ -86,15 +89,15 @@ while True: #Loop do programa.
                         contadorfuncionarionovo=0
                         while contadorfuncionarionovo==0:
                             id_funcionario = id_funcionario+1
-                            funcionarios=Funcionario(input("Digite o nome do funcionario que você irá adicionar: \n"),EntradaCPF(input("Digite o cpf do novo funcionário:")),input("Digite o email do novo funcionário: \n"),EntradaCPF(input("Digite o telefone do novo funcionário: \n")),(input("Digite o endereço: ")),lista_funcionario,id_funcionario,id_funcionario,input("Digite a senha do login do novo funcionário: \n"),input("digite o salário: \n"),input("Quantas horas ele deverá trabalhar mensalmente: \n"))
+                            funcionarios=Funcionario(input("Digite o nome do funcionario que você irá adicionar: \n"),input("Digite o cpf do novo funcionário:"),input("Digite o email do novo funcionário: \n"),input("Digite o telefone do novo funcionário: \n"),(input("Digite o endereço: ")),lista_funcionario,id_funcionario,input("Digite a senha do login do novo funcionário: \n"),input("digite o salário: \n"),input("Quantas horas ele deverá trabalhar mensalmente: \n"))
                             print(funcionarios.exibir_info_pessoa())
                             abc=input("As informações do novo funcionário estão corretas?S/N\n").lower()
                             if abc=="s":
                                 contadorfuncionarionovo=1
+                                print("O id do novo funcionário é",lista_funcionario[id_funcionario][5],":")
                             else:
                                 id_funcionario = id_funcionario-1
                         #FUNCIONARIO.append(lista_funcionario) nn precisa mais disso pq o lista_funcionario ja faz essa função
-                        print(lista_funcionario)
                         funcionarios = [] #Resetar a lista pro próximo uso
                         ID = len(SENHAS) 
                         VerificarSenhas(SENHAS, f"Insira a senha do funcionário de ID {ID} para revisão: ", ID)
@@ -104,13 +107,13 @@ while True: #Loop do programa.
                         Login = False
                         adm = False
                         break  
-                elif(len(SENHAS>=2)):
-                    xyz=input("Escolha o que deseja fazer sobre os funcionários:\n1 - Adicionar funcionário\n2 - Excluir algum funcionário\n3 - Editar Informações dos funcionários\n0 - SAIR\n") 
-                    if xyz=='1':
+                elif(len(SENHAS)>=2):
+                    xyz=EntradaInteiraMaiorIgualQueZero("Escolha o que deseja fazer sobre os funcionários:\n1 - Adicionar funcionário\n2 - Excluir algum funcionário\n3 - Editar Informações dos funcionários\n0 - SAIR\n") 
+                    if xyz==1:
                         contadorfuncionarionovo=0
                         while contadorfuncionarionovo==0:
                             id_funcionario = id_funcionario+1
-                            funcionarios=Funcionario(input("Digite o nome do funcionario que você irá adicionar: \n"),EntradaCPF(input("Digite o cpf do novo funcionário:")),input("Digite o email do novo funcionário: \n"),EntradaCPF(input("Digite o telefone do novo funcionário: \n")),(input("Digite o endereço: ")),lista_funcionario,id_funcionario,id_funcionario,input("Digite a senha do login do novo funcionário: \n"),input("digite o salário: \n"),input("Quantas horas ele deverá trabalhar mensalmente: \n"))
+                            funcionarios=Funcionario(input("Digite o nome do funcionario que você irá adicionar: \n"),input("Digite o cpf do novo funcionário:"),input("Digite o email do novo funcionário: \n"),input("Digite o telefone do novo funcionário: \n"),(input("Digite o endereço: ")),lista_funcionario,id_funcionario,input("Digite a senha do login do novo funcionário: \n"),input("digite o salário: \n"),input("Quantas horas ele deverá trabalhar mensalmente: \n"))
                             print(funcionarios.exibir_info_pessoa())
                             abc=input("As informações do novo funcionário estão corretas?S/N\n").lower()
                             if abc=="s":
@@ -118,21 +121,21 @@ while True: #Loop do programa.
                             else:
                                 id_funcionario = id_funcionario-1
                         #FUNCIONARIO.append(lista_funcionario) nn precisa mais disso pq o lista_funcionario ja faz essa função
-                        print(lista_funcionario)
                         funcionarios = [] #Resetar a lista pro próximo uso
                         ID = len(SENHAS) 
                         VerificarSenhas(SENHAS, f"Insira a senha do funcionário de ID {ID} para revisão: ", ID)
                         LimparTerminal()
-                    elif xyz=='0':
+                    elif xyz==0:
                         Login = False
                         adm = False
                         break
             elif(Decisao==2):
-                tipo=input("Escolha qual tipo você quer: \n1-Livros\n2-Jornal\n3-Revistas\n0-Sair\n")
-                if tipo==1:           
-                    decisao=input("Você escolheu a opção sobre Livros:\nO que deseja fazer 1-Adicionar Livros 2-Excluir Livros 3-Mudar informações dos livros 4-empréstimo de Livros 0-Sair ")
-                    if (len(lista_livro)==1):
-                        decisao_imp=input("Não tem nenhum Livro ainda, deseja adiocionar agora: S\N\nSe a resposta for não você irá deslogar por conta de erro humano:\n").lower()
+                tipo=EntradaInteiraMaiorIgualQueZero("Escolha qual tipo você quer: \n1-Livros\n2-Jornal\n3-Revistas\n0-Sair\n")
+                if tipo==1:
+                    LimparTerminal()           
+                    decisao=EntradaInteiraMaiorIgualQueZero("Você escolheu a opção sobre Livros:\nO que deseja fazer 1-Adicionar Livros 2-Excluir Livros 3-Mudar informações dos livros 4-empréstimo de Livros 0-Sair \n ")
+                    if (len(lista_livro)==1 and decisao!=1):
+                        decisao_imp=input("Não tem nenhum Livro ainda, deseja adiocionar agora: S/N \n Se a resposta for não você irá deslogar por conta de erro humano: ").lower()
                         if decisao_imp== "s":    
                             decisao=1
                         else:
@@ -144,12 +147,11 @@ while True: #Loop do programa.
                         contadorlivronovo=0
                         while contadorlivronovo==0:
                             id_livro=id_livro+1
-                            nome_livro=input("Digite o titulo do novo livro")
-                            livro=Livro(nome_livro,id_livro,input("Digite a editora do livro:",nome_livro,":"),'L',lista_livro,input("Digite o ano de publicação do livro",nome_livro,": "),input("Digite a edição do livro",nome_livro,": "),input("Digite o autor do livro",nome_livro,": "),input("Digite a quantidade de livros",nome_livro,"que você irá adicionar: "))
+                            livro=Livro(input("Digite o titulo do novo livro: "),id_livro,input("Digite a editora do livro:"),'L',input("Digite a quantidade de cópias desse livro que você irá adicionar: "),lista_livro,input("Digite o ano de publicação do livro: "),input("Digite a edição do livro: "),input("Digite o autor do livro: "))
                             print(livro.exibir())
-                            ab=input("As informações do novo livro estão corretas?S/N\n").lower()
-                            if ab=="s":
-                                contadorlivroonovo=1
+                            #(input("As informações do novo livro estão corretas?S/N\n")).lower()
+                            if input("As informações do novo livro estão corretas?S/N\n").lower()=="s":
+                                contadorlivronovo=1
                             else:
                                 id_livro = id_livro-1
                     #elif decisao==2:
@@ -163,10 +165,11 @@ while True: #Loop do programa.
                         adm = False
                         break
                 elif tipo==2:
-                    decisao=input("Você escolheu a opção sobre Jornais:\nO que deseja fazer 1-Adicionar Jornais 2-Excluir Jornais 3-Mudar informações dos Jornais 4-empréstimo de jornais 0-Sair ")
+                    LimparTerminal()
+                    decisao=EntradaInteiraMaiorIgualQueZero("Você escolheu a opção sobre Jornais:\nO que deseja fazer 1-Adicionar Jornais 2-Excluir Jornais 3-Mudar informações dos Jornais 4-empréstimo de jornais 0-Sair ")
                     if decisao==1:
-                        if (len(lista_jornal)==1):
-                            decisao_imp=input("Não tem nenhum jornal ainda, deseja adiocionar agora: S\N\nSe a resposta for não você irá deslogar por conta de erro humano:\n").lower()
+                        if (len(lista_jornal)==1 and decisao!=1):
+                            decisao_imp=input("Não tem nenhum jornal ainda, deseja adiocionar agora: S/N\nSe a resposta for não você irá deslogar por conta de erro humano:\n").lower()
                             if decisao_imp== "s":    
                                 decisao=1
                             else:
@@ -177,12 +180,12 @@ while True: #Loop do programa.
                         contadorjornalnovo=0
                         while contadorjornalnovo==0:
                             id_jornal=id_jornal+1
-                            nome_jornal=input("Digite o titulo do novo jornal") 
-                            jornal=Jornal(nome_jornal,id_jornal,input("Digite a editora do jornal ",nome_jornal,": "),'J',lista_jornal,input("Digite a data de publicação do jornal",nome_jornal,": "),input("Digite a quantidade de jornais",nome_jornal,"que você irá adicionar: "))
+                            nome_jornal=input("Digite o titulo do novo jornal: ") 
+                            jornal=Jornal(nome_jornal,id_jornal,input("Digite a editora do jornal: "),'J',lista_jornal,input("Digite a data de publicação do jornal: "),input("Digite a quantidade de cópias do jornal que você irá adicionar: "))
                             print(jornal.exibir())
                             ac=input("As informações do novo jornal estão corretas?S/N\n").lower()
                             if ac=="s":
-                                contadorjornalonovo=1
+                                contadorjornalnovo=1
                             else:
                                 id_jornal = id_jornal-1
                     #elif decisao==2:
@@ -196,22 +199,22 @@ while True: #Loop do programa.
                         adm = False
                         break
                 elif tipo==3:
-                    decisao=input("Você escolheu a opção sobre Revistas:\nO que deseja fazer 1-Adicionar Revistas 2-Excluir Revistas 3-Mudar informações dos Jornais 4-empréstimo de Jornais 0-Sair ")
+                    decisao=EntradaInteiraMaiorIgualQueZero("Você escolheu a opção sobre Revistas:\nO que deseja fazer 1-Adicionar Revistas 2-Excluir Revistas 3-Mudar informações dos Jornais 4-empréstimo de Jornais 0-Sair ")
+                    if (len(lista_revista)==1 and decisao!=1):
+                        decisao_imp=input("Não tem nenhuma revista ainda, deseja adiocionar agora: S/N\nSe a resposta for não você irá deslogar por conta de erro humano:\n").lower()
+                        if decisao_imp== "s":    
+                            decisao=1
+                        else:
+                            print("Ok, voltando o sistema.\nErrar é humano.")
+                            Login = False
+                            adm = False
+                            break
                     if decisao==1:
-                        if (len(lista_revista)==1):
-                            decisao_imp=input("Não tem nenhuma revista ainda, deseja adiocionar agora: S\N\nSe a resposta for não você irá deslogar por conta de erro humano:\n").lower()
-                            if decisao_imp== "s":    
-                                decisao=1
-                            else:
-                                print("Ok, voltando o sistema.\nErrar é humano.")
-                                Login = False
-                                adm = False
-                                break
                         contadorrevistanovo=0
                         while contadorrevistanovo==0:
                             id_revista=id_revista+1
                             nome_revista=input("Digite o titulo da nova revista: ") #titulo, identificador, editora, tipo,lista_revista, edicao, qntd
-                            revista=Revista(nome_revista,id_revista,input("Digite a editora da revista ",nome_revista,": "),'R',lista_revista,input("Digite a edição da revista",nome_revista,": "),input("Digite a quantidade de revistas",nome_revista,"que você irá adicionar: "))
+                            revista=Revista(nome_revista,id_revista,input("Digite a editora da revista: "),'R',lista_revista,input("Digite a edição da revista: "),input("Digite a quantidade de cópias da revista que você irá adicionar: "))
                             print(revista.exibir())
                             ac=input("As informações da nova revista estão corretas?S/N\n").lower()
                             if ac=="s":
