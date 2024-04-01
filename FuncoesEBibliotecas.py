@@ -121,7 +121,6 @@ def VerificarSenhas(ListaSenhas, Mensagem, ID):
   while True:
     ListaSenhas.append(Criptografar(input(Mensagem)))
     LimparTerminal()
-    print(ListaSenhas)
     if (Criptografar(input("Repita a senha: ")) == ListaSenhas[ID]):
         print("Senha validada com sucesso!")
         break
