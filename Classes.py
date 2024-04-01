@@ -30,10 +30,9 @@ class Cliente(Humano):
      
 
 class Funcionario(Humano):
-    def __init__(self,nome,cpf,email,telefone,endereco,lista_funcionario,id_funcionario,login,senha,salario,horas):
+    def __init__(self,nome,cpf,email,telefone,endereco,lista_funcionario,id_funcionario,senha,salario,horas):
         super().__init__(nome,cpf,email,telefone,endereco)
-        self.__id_funcionario=id_funcionario    #ID_FUNCIONARIO
-        self.login=login    #login
+        self.__id_funcionario=id_funcionario    #ID_FUNCIONARIO   #login
         self.senha=senha    #senha
         self.__salario=salario    #salário
         self.__horas=horas      #horas trabalhadas
@@ -45,7 +44,6 @@ class Funcionario(Humano):
         funcionario.append(telefone)
         funcionario.append(endereco)
         funcionario.append(id_funcionario)
-        funcionario.append(login)
         funcionario.append(senha)
         funcionario.append(salario)
         funcionario.append(horas)
@@ -79,37 +77,37 @@ class Papel:
 
 
 class Livro(Papel):
-  def _init_(self, titulo, identificador, editora, tipo, lista_livro, ano, edicao, autor, qntd):
+  def __init__(self, titulo, identificador, editora, tipo, qntd, lista_livro, ano, edicao, autor):
       super()._init_(titulo, identificador, editora, tipo, qntd)
       self.ano = ano  # Ano
       self.edicao = edicao  # Edição
       self.autor = autor  # Autor
       caracteristicas = [titulo, identificador, editora, qntd, ano, edicao, autor]
       lista_livro.append(caracteristicas)
-      self.lista = lista_livro
-  def Exibir(self):
+      self.lista = lista_livro[1]
+  def exibir(self):
       return f"{self.lista}"
 
 
 class Revista(Papel):
-  def _init_(self, titulo, identificador, editora, tipo,lista_revista, edicao, qntd):
+  def __init__(self, titulo, identificador, editora, tipo,lista_revista, edicao, qntd):
       super()._init_(titulo, identificador, editora, tipo, qntd)
       self.edicao = edicao 
       caracteristicas=[titulo,identificador,editora,qntd,edicao]
       lista_revista.append(caracteristicas)
-      self.lista = lista_revista
+      self.lista = lista_revista[1]
 
   def exibir(self):
       return f"{self.lista}"
 
 
 class Jornal(Papel):
-  def _init_(self, titulo, identificador, editora, tipo,lista_jornal, data, qntd):
+  def __init__(self, titulo, identificador, editora, tipo,lista_jornal, data, qntd):
       super()._init_(titulo, identificador, editora, tipo, qntd)
       self.data = data
       caracteristicas=[titulo,identificador,editora,qntd,data]
       lista_jornal.append(caracteristicas)
-      self.lista = lista_jornal
+      self.lista = lista_jornal[1]
 
   def exibir(self):
       return f"{self.lista}"
