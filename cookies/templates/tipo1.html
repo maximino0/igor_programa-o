@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/logout" method="post">
+            <button type="submit" class="btn-add">logout</button>
+            <div>
+                <h2>{{verificacao | safe}}</h2>
+            </div>
+        </form>
+    </div>
+    <div>
+        {% with mensagens = get_flashed_messages(with_categories=True) %}
+        {% if mensagens %}
+        <ul>
+            {% for category, mensagem in mensagens %}
+            <li class="{{ category }}">{{ mensagem }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+
+</html>

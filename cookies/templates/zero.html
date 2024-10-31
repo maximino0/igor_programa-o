@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Erro de Divisão por Zero</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Erro</h1>
+    <p>{{ message }}</p>
+    <a href="{{ url_for('login.index') }}">Voltar para a página inicial</a>
+</body>
+</html>

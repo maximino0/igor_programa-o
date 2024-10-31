@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comfortaa', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+}
+.success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+    border: 1px solid #c3e6cb; /* Borda verde */
+}
+
+.error {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+    border: 1px solid #f5c6cb; /* Borda vermelha */
+}
+
+.danger {
+    background-color: #f5c6cb; /* Vermelho intenso */
+    color: #721c24; /* Vermelho escuro */
+    border: 1px solid #f1b0b7; /* Borda vermelha intensa */
+}
+
+.warning {
+    background-color: #fff3cd; /* Amarelo claro */
+    color: #856404; /* Amarelo escuro */
+    border: 1px solid #ffeeba; /* Borda amarela */
+}
+
+.info {
+    background-color: #d1ecf1; /* Azul claro */
+    color: #0c5460; /* Azul escuro */
+    border: 1px solid #bee5eb; /* Borda azul */
+}
+
+.primary {
+    background-color: #cce5ff; /* Azul muito claro */
+    color: #004085; /* Azul escuro */
+    border: 1px solid #b8daff; /* Borda azul */
+}
+
+.secondary {
+    background-color: #e2e3e5; /* Cinza claro */
+    color: #383d41; /* Cinza escuro */
+    border: 1px solid #ced4da; /* Borda cinza */
+}
+
+.light {
+    background-color: #fefefe; /* Branco muito claro */
+    color: #818182; /* Cinza médio */
+    border: 1px solid #fdfdfe; /* Borda branca */
+}
+
+.dark {
+    background-color: #c6c8ca; /* Cinza escuro */
+    color: #212529; /* Preto */
+    border: 1px solid #b1b3b5; /* Borda cinza escuro */
+}
+.form-section, .table-section {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1e3a8a;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.btn-add {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #2563eb;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+table th, table td {
+    padding: 5px;
+    border: 1px solid #d1d5db;
+    text-align: center;
+}
+
+table td {
+    font-size: 12px;
+    text-align: left !important;
+}
+
+td .actions {
+    display: flex;
+    justify-content: center;
+    gap: 5px;  /* Espaçamento entre os botões */
+}
+
+table th {form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+    background-color: #eff6ff;
+    color: #1e3a8a;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.btn-edit, .btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-edit i {
+    color: #3b82f6;
+}
+
+.btn-delete i {
+    color: #ef4444;
+}
+
+.btn-edit:hover {
+    background-color: #e0f2fe;
+}
+
+.btn-delete:hover {
+    background-color: #fee2e2;
+}

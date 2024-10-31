@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Erro Genérico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Ocorreu um Erro</h1>
+    <p>Um erro ocorreu: {{ message }}</p>
+    <a href="{{ url_for('login.index') }}">Voltar para a página inicial</a>
+</body>
+</html>
